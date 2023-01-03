@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // import Box from '../Box';
 // import { useGroupEventHrs } from '../../utils/hooks';
 // const Days = ({ events }) => {
@@ -34,31 +34,43 @@ export const useGroupBy = (eventList = []) => {
   return { grpedObj };
 };
 
+export function groupByHrs(eventList) {
+  if (!eventList) return {};
+  let obj = {};
+  eventList.forEach((item) => {
+    const index = Math.floor(Number(item.timings.startTime));
+    if (obj[index] === undefined) {
+      obj[index] = [item];
+    } else {
+      obj[index].push(item);
+    }
+  });
+  return obj;
+}
 
-export const useGroupEventHrs = (eventList = []) => {
-  const [grpedObj, setgrpdObj] = useState({});
-  useEffect(() => {
-    let obj = {};
-
-    eventList.forEach((item) => {
-      const index = item.timings.start
-      if (obj[index] === undefined) {
-        obj[index] = [item];
-      } else {
-        obj[index].push(item);
-      }
-    });
-    setgrpdObj(obj);
-  }, [eventList]);
-  return { grpedObj };
-};
+// export const useGroupEventHrs = (eventList = []) => {
+//   const [grpedObj, setgrpdObj] = useState({});
+//   useEffect(() => {
+//     let obj = {};
+//     eventList.forEach((item) => {
+//       const index = item.timings.start;
+//       if (obj[index] === undefined) {
+//         obj[index] = [item];
+//       } else {
+//         obj[index].push(item);
+//       }
+//     });
+//     setgrpdObj(obj);
+//   }, [eventList]);
+//   return { grpedObj };
+// };
 
 export const DAYS = [
-  'MONDAY',
-  'TUESDAY',
-  'WEDNESDAY',
-  'THURSDAY',
-  'FRIDAY',
-  'SATURDAY',
-  'SUNDAY',
+  "MONDAY",
+  "TUESDAY",
+  "WEDNESDAY",
+  "THURSDAY",
+  "FRIDAY",
+  "SATURDAY",
+  "SUNDAY",
 ];

@@ -26,3 +26,18 @@ p {
   gap: 20px;
   margin-top: 20px;
 }
+
+.box{
+  border: 1px solid;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}
+.work{
+   background: green;
+   color: #fff;
+}
+.reminder{
+  background: grey;
+   color: #fff;
+}

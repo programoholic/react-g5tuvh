@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import './style.css';
-import SideNav from './SideNav';
-import Calendar from './Calendar';
+import React, { useState } from "react";
+import "./style.css";
+import SideNav from "./SideNav";
+import Calendar from "./Calendar";
 export default function App() {
   const [filteredEvent, setFilteredEvents] = useState(events);
   return (
@@ -17,65 +17,68 @@ export default function App() {
 const events = [
   {
     id: 1,
-    invitees: [{ id: 12, name: 'ABC' }],
+    invitees: [{ id: 12, name: "ABC" }],
     timings: {
-      startTime: '9',
-      endTime: '10',
-      format: '24H',
-      day: 'MONDAY',
-      date: '12222022',
+      startTime: "9",
+      endTime: "10",
+      format: "24H",
+      day: "MONDAY",
+      date: "12222022",
     },
-    category: 'Work',
+    category: "Work",
     organiser: {
       id: 13,
-      name: 'test',
+      name: "test",
     },
     eventDetails: {
-      url: '',
-      location: '',
-      inviteLink: 'google.com',
+      url: "",
+      location: "",
+      inviteLink: "google.com",
+      title: "sample title",
     },
   },
   {
     id: 2,
-    invitees: [{ id: 12, name: 'ABC' }],
+    invitees: [{ id: 12, name: "ABC" }],
     timings: {
-      startTime: '11',
-      endTime: '12',
-      format: '24H',
-      day: 'MONDAY',
-      date: '12222022',
+      startTime: "11",
+      endTime: "12",
+      format: "24H",
+      day: "MONDAY",
+      date: "12222022",
     },
-    category: 'Work',
+    category: "reminder",
     organiser: {
       id: 13,
-      name: 'test',
+      name: "test",
     },
     eventDetails: {
-      url: '',
-      location: '',
-      inviteLink: 'google.com',
+      url: "",
+      location: "",
+      inviteLink: "google.com",
+      title: "sample title",
     },
   },
   {
     id: 2,
-    invitees: [{ id: 12, name: 'ABC' }],
+    invitees: [{ id: 12, name: "ABC" }],
     timings: {
-      startTime: '11',
-      endTime: '12',
-      format: '24H',
-      day: 'TUESDAY',
-      date: '12222022',
+      startTime: "11",
+      endTime: "12",
+      format: "24H",
+      day: "TUESDAY",
+      date: "12222022",
     },
-    category: 'Work',
+    category: "Work",
     organiser: {
       id: 13,
-      name: 'test',
+      name: "test",
     },
     eventDetails: {
-      url: '',
-      location: '',
-      inviteLink: 'google.com',
+      url: "",
+      location: "",
+      inviteLink: "google.com",
+      title: "sample title",
     },
   },
 ];
