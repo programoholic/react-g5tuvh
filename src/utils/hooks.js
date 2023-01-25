@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from "react";
-// import Box from '../Box';
-// import { useGroupEventHrs } from '../../utils/hooks';
-// const Days = ({ events }) => {
-//   console.log('days : ', events);
-//   // const {} = useGroupEventHrs(events);
-//   const rows = 24;
-//   const cols = [];
-//   for (let i = 0; i < rows; i++) {
-//     cols.push(<Box key={i} index={i} events={events} />);
-//   }
-//   return <div>{cols}</div>;
-// };
-
-// export default Days;
+import React, { useState, useEffect } from 'react';
 
 export const useGroupBy = (eventList = []) => {
   const [grpedObj, setgrpdObj] = useState({});
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     let obj = {};
-
+    const set = new Set();
     eventList.forEach((item) => {
+      set.add(item.category);
       const index = DAYS.findIndex(
         (day) => day.toLowerCase() === item.timings.day.toLowerCase()
       );
@@ -30,12 +19,13 @@ export const useGroupBy = (eventList = []) => {
       }
     });
     setgrpdObj(obj);
+    setCategories([...set]);
   }, [eventList]);
-  return { grpedObj };
+  return { grpedObj, categories };
 };
 
 export function groupByHrs(eventList) {
-  if (!eventList) return {};
+  if (!eventList || eventList?.length == 0) return {};
   let obj = {};
   eventList.forEach((item) => {
     const index = Math.floor(Number(item.timings.startTime));
@@ -48,29 +38,12 @@ export function groupByHrs(eventList) {
   return obj;
 }
 
-// export const useGroupEventHrs = (eventList = []) => {
-//   const [grpedObj, setgrpdObj] = useState({});
-//   useEffect(() => {
-//     let obj = {};
-//     eventList.forEach((item) => {
-//       const index = item.timings.start;
-//       if (obj[index] === undefined) {
-//         obj[index] = [item];
-//       } else {
-//         obj[index].push(item);
-//       }
-//     });
-//     setgrpdObj(obj);
-//   }, [eventList]);
-//   return { grpedObj };
-// };
-
 export const DAYS = [
-  "MONDAY",
-  "TUESDAY",
-  "WEDNESDAY",
-  "THURSDAY",
-  "FRIDAY",
-  "SATURDAY",
-  "SUNDAY",
+  'MONDAY',
+  'TUESDAY',
+  'WEDNESDAY',
+  'THURSDAY',
+  'FRIDAY',
+  'SATURDAY',
+  'SUNDAY',
 ];

@@ -1,10 +1,14 @@
-import React from "react";
+import React from 'react';
 
 const Event = ({ event }) => {
-  console.log("event : ", event);
+  const height = (event?.timings?.endTime - event?.timings?.startTime) * 100;
   return (
-    <div class={event.category}>
-      <h4> {event?.eventDetails?.title} </h4>
+    <div
+      className={[event.category, 'event'].join(' ')}
+      style={{ height: `${height}%` }}
+    >
+      <p> {event?.eventDetails?.title} </p>
+      <p> {`${event?.timings?.startTime} - ${event?.timings?.endTime}`} </p>
     </div>
   );
 };
